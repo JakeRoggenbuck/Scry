@@ -11,7 +11,7 @@ class Who:
     pts: str
     date: str
     time: str
-    ip: str
+    ip: str = "localhost"
 
 
 @dataclass
