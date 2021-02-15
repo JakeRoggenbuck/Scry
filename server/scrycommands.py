@@ -21,7 +21,7 @@ class Netstat:
     send: str
     local: str
     foreign: str
-    state: str
+    state: str = None
 
 
 @dataclass
