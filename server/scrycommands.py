@@ -55,6 +55,7 @@ class TrafficInstance:
     tx_coll: int
 
 
+
 def wrapper(command):
     try:
         output = subprocess.check_output(command, stderr=LOG_FILE, shell=True)
@@ -99,6 +100,7 @@ def failed_login():
             elif len(line) == 16:
                 # Gets the actual pieces of the returned split list, these
                 # things are the parameters needed for the dataclass
+
                 new = line[0:6] + line[10:11] + line[12:13] + line[14:] + [True]
 
             _all.append(LoginSSH(*new))
