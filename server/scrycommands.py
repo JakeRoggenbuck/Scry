@@ -36,6 +36,7 @@ class LoginSSH:
     ip: str
     port: int
     name: str
+    invalid_user: bool = False
 
 
 def wrapper(command):
@@ -67,8 +68,13 @@ def failed_login():
     if output is not None:
         output = seperate(output)
         _all = []
-        for x in output:
-            new = x[0:6] + x[8:9] + x[10:11] + x[12:]
+        for line in output:
+            if len(line) == 14:
+                new = line[0:6] + line[8:9] + line[10:11] + line[12:]
+
+            elif len(line) == 16:
+                new = line[0:6] + line[10:11] + line[12:13] + line[14:] + [True]
+
             _all.append(LoginSSH(*new))
         return _all
 
