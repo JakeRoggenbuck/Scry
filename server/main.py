@@ -10,23 +10,45 @@ class Database:
         self.client = MongoClient(host, port)
         self.database = self.client["scry"]
 
-        self.connections = self.database["connections"]
         self.ports = self.database["ports"]
-        self.traffic = self.database["traffic"]
+        self.ssh_logins = self.database["ssh_logins"]
+        self.user_connections = self.database["user_connections"]
 
 
 class Updater:
     def __init__(self):
-        pass
+        self.db = Database()
 
     def check_ports(self):
         tcp_ports = scrycommands.netstat_listening_tcp()
         udp_ports = scrycommands.netstat_listening_udp()
 
         for port in tcp_ports + udp_ports:
-            print(port)
+            found = self.db.ports.find_one(port.__dict__)
+            if not found:
+                self.db.ports.insert_one(port.__dict__)
+
+    def check_users(self):
+        users = scrycommands.who()
+        for user in users:
+            found = self.db.user_connections.find_one(user.__dict__)
+            if not found:
+                self.db.user_connections.insert_one(user.__dict__)
+
+    def check_ssh_login(self):
+        failed = scrycommands.failed_login()
+        accepted = scrycommands.accepted_login()
+
+        if accepted is not None and failed is not None:
+
+            for login in failed + accepted:
+                found = self.db.ssh_logins.find_one(login.__dict__)
+                if not found:
+                    self.db.ssh_logins.insert_one(login.__dict__)
 
 
 if __name__ == "__main__":
     UPDATER = Updater()
     UPDATER.check_ports()
+    UPDATER.check_users()
+    UPDATER.check_ssh_login()
