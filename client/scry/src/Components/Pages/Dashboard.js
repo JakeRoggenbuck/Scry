@@ -6,29 +6,32 @@ import OpenPortsBox from '../Elements/OpenPortsBox';
 import OpenPorts from '../Elements/OpenPortsBox';
 import TrafficBox from '../Elements/TrafficBox';
 
-const Dashboard = (props) => {
-    
-    var MongoClient = require('mongodb').MongoClient;
-    var url = "mongodb://localhost:27017/";
-    
-    MongoClient.connect(url, function(err, db) {
+var MongoClient = require('mongodb').MongoClient;
+var url = "mongodb://localhost:27017/";
+
+/*MongoClient.connect(url, function(err, db) {
+    if (err) throw err;
+
+    // "scry" is the name of our DATABASE
+        var dbo = db.db("scry");
+
+    // Gets an array of things in the "user_connections" COLLECTION
+        dbo.collection("user_connections").find({}).toArray(function(err, result) {
         if (err) throw err;
-    
-        // "scry" is the name of our DATABASE
-          var dbo = db.db("scry");
-    
-        // Gets an array of things in the "user_connections" COLLECTION
-          dbo.collection("user_connections").find({}).toArray(function(err, result) {
+        console.log(result);
+        db.close();
+        });
+
+        dbo.collection("ports").find({}).toArray(function(err, result) {
             if (err) throw err;
             console.log(result);
             db.close();
-          });
-    });
+            });
+});*/
 
+const Dashboard = (props) => {
     return (
         <>
-            <h1>Scry</h1>
-
             <div className="monitor-box-grid-div">
                 <LoginHistoryBox/>
                 <OpenPortsBox/>
