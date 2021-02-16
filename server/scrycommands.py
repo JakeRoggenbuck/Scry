@@ -19,8 +19,8 @@ class Netstat:
     proto: str
     recv: str
     send: str
-    local: str
-    foreign: str
+    local: str = None
+    foreign: str = None
     state: str = None
 
 
