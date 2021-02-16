@@ -1,4 +1,5 @@
 from fastapi import FastAPI
+from fastapi.responses import JSONResponse
 from database import Database
 
 
@@ -13,6 +14,7 @@ def read_root():
 
 @app.get("/collection/{collection_name}")
 def read_item(collection_name: str):
+    headers = {'Access-Control-Allow-Origin': '*'}
     documents = database.database[collection_name].find({})
     _all = []
     for doc in documents:
@@ -21,4 +23,4 @@ def read_item(collection_name: str):
             if key != "_id":
                 full[key] = value
         _all.append(full)
-    return _all
+    return JSONResponse(content=_all, headers=headers)
