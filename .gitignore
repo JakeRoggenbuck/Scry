@@ -41,6 +41,9 @@ build/Release
 node_modules/
 jspm_packages/
 
+# Dependency JSON
+package-lock.json
+
 # TypeScript v1 declaration files
 typings/
 
@@ -97,8 +100,15 @@ dist
 # FuseBox cache
 .fusebox/
 
+# Python cache
+__pycache__/
+
 # DynamoDB Local files
 .dynamodb/
 
 # TernJS port file
 .tern-port
+
+# IDEA config
+.idea/
+.iml
