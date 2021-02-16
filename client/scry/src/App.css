@@ -226,3 +226,46 @@ p {
 	--dark-dark-shadow: 0, 0, 0, 0.25;
 	--dark-light-shadow: 38, 55, 64, 0.5;
 }
+
+.ports-table-scroll-div {
+  width: 100%;
+  overflow-x: scroll;
+
+  background-color: rgb(var(--background-dark));
+  border-radius: 4px;
+  box-shadow: 10px 10px 20px rgba(var(--dark-dark-shadow)), 
+            -10px -10px 20px rgba(var(--dark-light-shadow));
+}
+
+.ports-table {
+  width: auto;
+  border-collapse: collapse;
+}
+
+.ports-table th {
+  font-family: 'Inconsolata', monospace;
+  font-weight: 700;
+  font-size: 1.25rem;
+  letter-spacing: 1px;
+
+  border: 1px solid #ddd;
+
+  color: rgb(245, 246, 250);
+
+  margin: 0;
+  padding: 0;
+}
+
+.ports-table td {
+  font-family: 'Inconsolata', monospace;
+  font-weight: 700;
+  font-size: 1rem;
+  letter-spacing: 1px;
+
+  border: 1px solid #ddd;
+
+  color: #87B1D1;
+
+  margin: 0;
+  padding: 0;
+}
