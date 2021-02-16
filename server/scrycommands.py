@@ -1,8 +1,36 @@
 import subprocess
 from dataclasses import dataclass
+from enum import Enum
+import platform
+
+
+class SystemType(Enum):
+    ARCH_LINUX = 0
+    DEBIAN = 1
+    MAC = 2
+    DEFAULT = 3
 
 
 LOG_FILE = open("error.log", "w")
+
+AUTH_LOG = {
+    SystemType.ARCH_LINUX: "journalctl -u sshd |tail -100",
+    SystemType.DEBIAN: "cat /var/log/auth.log",
+    SystemType.MAC: "cat /var/log/system.log",
+    SystemType.DEFAULT: "cat /var/log/auth.log",
+}
+
+
+def get_os():
+    if platform.system() == "Darwin":
+        return SystemType.MAC
+    if "arch" in platform.release():
+        return SystemType.ARCH_LINUX
+    else:
+        return SystemType.DEFAULT
+
+
+SYSTEM = get_os()
 
 
 @dataclass
@@ -81,7 +109,8 @@ def netstat_listening_udp():
 
 
 def failed_login():
-    output = wrapper("grep 'Failed password' /var/log/auth.log")
+    log_file = AUTH_LOG[SYSTEM]
+    output = wrapper(f"{log_file}| grep 'Failed password'")
     # Checks of the command return correctly
     if output is not None:
         output = seperate(output)
@@ -108,7 +137,8 @@ def failed_login():
 
 
 def accepted_login():
-    output = wrapper("grep 'Accepted password' /var/log/auth.log")
+    log_file = AUTH_LOG[SYSTEM]
+    output = wrapper(f"{log_file}| grep 'Accepted password'")
     if output is not None:
         output = seperate(output)
         _all = []
