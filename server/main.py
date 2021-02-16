@@ -3,6 +3,7 @@ from pymongo import MongoClient
 from dataclasses import dataclass
 from enum import Enum
 import scrycommands
+from time import sleep
 
 
 class Database:
@@ -13,6 +14,7 @@ class Database:
         self.ports = self.database["ports"]
         self.ssh_logins = self.database["ssh_logins"]
         self.user_connections = self.database["user_connections"]
+        self.network_traffic = self.database["network_traffic"]
 
 
 class Updater:
@@ -46,9 +48,29 @@ class Updater:
                 if not found:
                     self.db.ssh_logins.insert_one(login.__dict__)
 
+    def add_network_traffic(self):
+        traffic_instances = scrycommands.network_traffic()
+        for traffic in traffic_instances:
+            self.db.network_traffic.insert_one(traffic.__dict__)
+
+    def update_loop(self):
+        # Loops for seconds in 5 minutes
+        for x in range(0, 60 * 5):
+            # Every Second
+            if x % 1 == 0:
+                self.add_network_traffic()
+
+            # Every 30 seconds
+            if x % 30 == 0:
+                self.check_users()
+                self.check_ports()
+
+            if x % 60 == 0:
+                self.check_ssh_login()
+
+            sleep(1)
+
 
 if __name__ == "__main__":
     UPDATER = Updater()
-    UPDATER.check_ports()
-    UPDATER.check_users()
-    UPDATER.check_ssh_login()
+    UPDATER.update_loop()
