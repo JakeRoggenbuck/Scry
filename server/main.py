@@ -58,7 +58,9 @@ class Updater:
         for x in range(0, 60 * 5):
             # Every Second
             if x % 1 == 0:
-                self.add_network_traffic()
+                # Network traffic disabled for now
+                # self.add_network_traffic()
+                pass
 
             # Every 30 seconds
             if x % 30 == 0:
