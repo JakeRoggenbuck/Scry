@@ -227,9 +227,16 @@ p {
 	--dark-light-shadow: 38, 55, 64, 0.5;
 }
 
+.detail-full-width-div {
+  padding: 32px;
+  text-align: left;
+}
+
 .ports-table-scroll-div {
   width: 100%;
   overflow-x: scroll;
+
+  padding: 2px;
 
   background-color: rgb(var(--background-dark));
   border-radius: 4px;
@@ -238,8 +245,13 @@ p {
 }
 
 .ports-table {
-  width: auto;
+  min-width: 100%;
   border-collapse: collapse;
+
+  border-collapse: collapse;
+    border-radius: 4px;
+    border-style: hidden; /* hide standard table (collapsed) border */
+    box-shadow: 0 0 0 1px #87B1D1; /* this draws the table border  */ 
 }
 
 .ports-table th {
@@ -248,8 +260,7 @@ p {
   font-size: 1.25rem;
   letter-spacing: 1px;
 
-  border: 1px solid #ddd;
-
+  border: 1px solid #87B1D1;
   color: rgb(245, 246, 250);
 
   margin: 0;
@@ -262,10 +273,13 @@ p {
   font-size: 1rem;
   letter-spacing: 1px;
 
-  border: 1px solid #ddd;
-
+  border: 1px solid #87B1D1;
   color: #87B1D1;
 
   margin: 0;
   padding: 0;
+}
+
+.ports-table th, .ports-table td {
+  padding: 8px;
 }

@@ -5,7 +5,7 @@ import { Link } from 'react-router-dom';
 
 const OpenPortsDetail = (props) => {
 
-    const [userList, setUserList] = useState();
+    const [portList, setPortList] = useState();
 
     async function fetchPortData() {
         let response
@@ -18,22 +18,19 @@ const OpenPortsDetail = (props) => {
 
     function populateOpenPorts(ports) {
         console.log(ports)
-        /*setUserList(
-            users.map((user) => 
-                <li>
-                    <div class="user-flex-row detail">
-                        <img src={User}/>
-
-                        <div className="user-flex-row-text">
-                            <h4><b>NAME - </b>{user.user}</h4>
-                            <p><b>PTS - </b>{user.pts}</p>
-                            <p><b>TIME - </b>{user.date} {user.time} {user.ip}</p>
-                        </div>
-                            
-                    </div>
-                </li>
+        setPortList(
+            ports.map((port) => 
+                <tr>
+                    <td>{port.proto}</td>
+                    <td>{port.recv}</td>
+                    <td>{port.send}</td>
+                    <td>{port.local}</td>
+                    <td>{port.foreign}</td>
+                    <td>{port.state}</td>
+                    <td>{port.file}</td>
+                </tr>
             )
-        )*/
+        )
     }
 
     useEffect(() => {
@@ -45,7 +42,7 @@ const OpenPortsDetail = (props) => {
 
     return (
         <>
-            <div className="detail-padded-div">
+            <div className="detail-full-width-div">
                 <Link className="disguised-a" to="/"><h2><img className="nav-back-arrow" src={LeftArrow}/>Scry</h2></Link>
                 <h1 style={{ marginBottom: "32px", marginTop: "8px" }}>Active Users</h1>
 
@@ -60,21 +57,10 @@ const OpenPortsDetail = (props) => {
                             <th>STATE</th>
                             <th>FILE</th>
                         </tr>
-                        <tr>
-                            <td>tcp</td>
-                            <td>0</td>
-                            <td>0</td>
-                            <td>value</td>
-                            <td>value</td>
-                            <td>value</td>
-                            <td>value</td>
-                        </tr>
+
+                        {portList}
                     </table>
                 </div>
-
-                <ul className="user-list-ul detail-list">
-                    { userList }
-                </ul>
             </div>
         </>
     );  
