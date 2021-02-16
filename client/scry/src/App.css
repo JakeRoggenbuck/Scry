@@ -62,6 +62,16 @@ h1 {
   padding: 0;
 }
 
+h2 {
+  font-family: 'Inconsolata', monospace;
+  font-weight: 700;
+
+  color: #87B1D1;
+
+  margin: 0;
+  padding: 0;
+}
+
 h3 {
   font-family: 'Inconsolata', monospace;
   font-weight: 700;
@@ -117,6 +127,11 @@ p {
   border-radius: 4px;
   box-shadow: 10px 10px 20px rgba(var(--dark-dark-shadow)), 
             -10px -10px 20px rgba(var(--dark-light-shadow));
+
+  -webkit-transition: all .25s ease;
+  -moz-transition: all .25s ease;
+  -o-transition: all .25s ease;
+  transition: all .25s ease;
 }
 
 * {
@@ -124,9 +139,35 @@ p {
 }
 
 /* LOGIN HISTORY */
+.nav-back-arrow {
+  width: 32px;
+	height: 32px;
+  padding: 8px;
+  background-color: rgba(var(--dark-light-shadow));
+	border-radius: 100px;
+
+  vertical-align: middle;
+  margin-top: -4px;
+  margin-right: 8px;
+}
+
 .user-list-ul {
   margin-left: -40px;
   list-style: none;
+}
+
+.detail-padded-div {
+  width: 1000px;
+  max-width: 100%;
+  padding: 32px;
+
+  margin: 0 auto;
+
+  text-align: left;
+}
+
+.detail-list li {
+  margin-bottom: 16px;
 }
 
 .user-flex-row {
@@ -134,6 +175,15 @@ p {
 	justify-content: flex-start;
 	align-items: center;
 	flex-direction: row;
+}
+
+.detail {
+  padding: 16px;
+
+  text-align: left;
+	border-radius: 4px;
+  box-shadow: 10px 10px 20px rgba(var(--dark-dark-shadow)), 
+            -10px -10px 20px rgba(var(--dark-light-shadow));
 }
 
 .user-flex-row img {
@@ -151,6 +201,20 @@ p {
 
 .user-flex-row-text {
   padding-left: 16px;
+}
+
+.disguised-a {
+  text-decoration: none;
+}
+
+.disguised-a:hover .monitor-box-div-card {
+  box-shadow: 20px 20px 20px rgba(var(--dark-dark-shadow)), 
+            -20px -20px 20px rgba(var(--dark-light-shadow));
+
+  -webkit-transition: all .25s ease;
+  -moz-transition: all .25s ease;
+  -o-transition: all .25s ease;
+  transition: all .25s ease;
 }
 
 :root {
