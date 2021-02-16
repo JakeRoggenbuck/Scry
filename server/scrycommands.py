@@ -22,6 +22,7 @@ class Netstat:
     local: str = None
     foreign: str = None
     state: str = None
+    _file: str = None
 
 
 @dataclass
