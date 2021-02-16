@@ -62,6 +62,7 @@ class Updater:
                 # self.add_network_traffic()
                 pass
 
+
             # Every 30 seconds
             if x % 30 == 0:
                 self.check_users()
