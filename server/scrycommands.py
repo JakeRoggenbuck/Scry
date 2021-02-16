@@ -73,11 +73,11 @@ def who():
 
 
 def netstat_listening_tcp():
-    return [Netstat(*x) for x in seperate(wrapper("netstat -lt"))[2:] if len(x) < 9]
+    return [Netstat(*x) for x in seperate(wrapper("netstat -lt"))[2:] if len(x) < 8]
 
 
 def netstat_listening_udp():
-    return [Netstat(*x) for x in seperate(wrapper("netstat -lu"))[2:] if len(x) < 9]
+    return [Netstat(*x) for x in seperate(wrapper("netstat -lu"))[2:] if len(x) < 8]
 
 
 def failed_login():
