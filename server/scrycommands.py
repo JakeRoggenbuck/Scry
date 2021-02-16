@@ -55,7 +55,6 @@ class TrafficInstance:
     tx_coll: int
 
 
-
 def wrapper(command):
     try:
         output = subprocess.check_output(command, stderr=LOG_FILE, shell=True)
@@ -148,10 +147,23 @@ def network_traffic():
             # each is a is zero so we don't need that, so it checks the mod of
             # the num (Index) for each value and only adds it to the list if
             # it's the first item and not the zero
-            traffic = [int(x) for num, x in enumerate(main[1:]) if (num - 1) % 2]
-            dropped = [int(x) for num, x in enumerate(output[index + 1]) if (num - 1) % 2]
+            traffic = []
+            for num, x in enumerate(main[1:]):
+                if (num - 1) % 2 == 1:
+                    if x[-1] == "K":
+                        x = int(x[0:-1]) * 1000
+                    traffic.append(int(x))
+
+            dropped = []
+            for num, x in enumerate(output[index + 1]):
+                if (num - 1) % 2 == 1:
+                    if x[-1] == "K":
+                        x = int(x[0:-1]) * 1000
+                    dropped.append(int(x))
 
             _all.append(TrafficInstance(name, *traffic, *dropped))
             # Jumps two, to the next interface because each interface has two
             # lines of output
             index += 2
+
+        return _all
