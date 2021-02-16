@@ -17,11 +17,20 @@
   background-color: #282c34;
   min-height: 100vh;
   display: flex;
-  flex-direction: column;
+  /* flex-direction: column;
   align-items: center;
-  justify-content: center;
+  justify-content: center; */
   font-size: calc(10px + 2vmin);
   color: white;
+}
+
+.group-title {
+  text-align: left;
+  margin-bottom: .5rem;
+  font-size: 1.5rem;
+}
+.current {
+  background-color: #282c34;
 }
 
 .App-link {
@@ -35,4 +44,121 @@
   to {
     transform: rotate(360deg);
   }
+}
+
+/* GLOBAL */
+body {
+  background-color: rgb(var(--background-dark));
+}
+
+h1 {
+  font-family: 'Inconsolata', monospace;
+  font-weight: 700;
+  font-size: 2rem;
+
+  color: rgb(245, 246, 250);
+
+  margin: 0;
+  padding: 0;
+}
+
+h3 {
+  font-family: 'Inconsolata', monospace;
+  font-weight: 700;
+  font-size: 2rem;
+
+  color: rgb(245, 246, 250);
+
+  margin: 0;
+  padding: 0;
+}
+
+h4 {
+  font-family: 'Inconsolata', monospace;
+  font-weight: 700;
+  font-size: 1.5rem;
+
+  color: rgb(245, 246, 250);
+
+  margin: 0;
+  padding: 0;
+}
+
+p {
+  margin: 0;
+  padding: 0;
+
+  font-family: 'Inconsolata', monospace;
+  font-weight: 400;
+  color: #87B1D1;
+}
+
+/* DASHBOARD ELEMENTS */
+.monitor-box-grid-div {
+  padding: 16px 16px 0px 16px;
+  display: flex;
+  flex-flow: wrap;
+}
+
+.monitor-box-div {
+  height: 30rem;
+  flex: 1 1 0;
+  padding: 20px;
+}
+
+.monitor-box-div-card {
+  width: 100%;
+  height: 100%;
+
+  padding: 16px;
+  text-align: left;
+  
+  background-color: rgb(var(--background-dark));
+  border-radius: 4px;
+  box-shadow: 10px 10px 20px rgba(var(--dark-dark-shadow)), 
+            -10px -10px 20px rgba(var(--dark-light-shadow));
+}
+
+* {
+  box-sizing: border-box;
+}
+
+/* LOGIN HISTORY */
+.user-list-ul {
+  margin-left: -40px;
+  list-style: none;
+}
+
+.user-flex-row {
+	display: flex;
+	justify-content: flex-start;
+	align-items: center;
+	flex-direction: row;
+}
+
+.user-flex-row img {
+	width: 48px;
+	height: 48px;
+  padding: 8px;
+  background-color: rgba(var(--dark-light-shadow));
+	border-radius: 100px;
+}
+
+.user-flex-row p {
+	font-size: 1.5rem;
+	text-align: left;
+}
+
+.user-flex-row-text {
+  padding-left: 16px;
+}
+
+:root {
+	--background-light: 236, 240, 241;
+	--light-dark-shadow: 227, 227, 227;
+	--light-light-shadow: 255, 255, 255;
+
+  --background-dark: 27, 39, 46;
+	--dark-dark-shadow: 0, 0, 0, 0.25;
+	--dark-light-shadow: 38, 55, 64, 0.5;
 }
