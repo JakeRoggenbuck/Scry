@@ -1,4 +1,5 @@
 import React, {useEffect, useState} from 'react';
+import { Link } from 'react-router-dom';
 import ActiveUsersBox from '../Elements/ActiveUsersBox';
 import LoginHistoryBox from '../Elements/LoginHistoryBox';
 import LoginHistory from '../Elements/LoginHistoryBox';
@@ -33,12 +34,12 @@ const Dashboard = (props) => {
     return (
         <>
             <div className="monitor-box-grid-div">
+                <ActiveUsersBox/>
                 <LoginHistoryBox/>
-                <OpenPortsBox/>
             </div>
 
             <div className="monitor-box-grid-div">
-                <ActiveUsersBox/>
+                <OpenPortsBox/>
                 <TrafficBox/>
             </div>
         </>
