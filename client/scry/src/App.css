@@ -283,3 +283,7 @@ p {
 .ports-table th, .ports-table td {
   padding: 8px;
 }
+
+.user-flex-row {
+  margin-bottom: 16px;
+}
