@@ -32,3 +32,10 @@ The client is a Node.js React app the pulls data from the local Scry web API and
 ![Ports](https://github.com/JakeRoggenbuck/Scry/blob/main/images/ports.png?raw=true)
 ![Users](https://github.com/JakeRoggenbuck/Scry/blob/main/images/users.png?raw=true)
 ![Main Page With Command Line](https://github.com/JakeRoggenbuck/Scry/blob/main/images/main_page_with_command_line.png?raw=true)
+
+## Design process artifacts
+### Original ideas
+![First structure idea](https://github.com/JakeRoggenbuck/Scry/blob/main/images/original_system_design.png?raw=true)
+### Original current designs
+![Mongodb connection](https://github.com/JakeRoggenbuck/Scry/blob/main/images/using_mongodb_to_connect_the_two_apps.png?raw=true)
+![Current system design](https://github.com/JakeRoggenbuck/Scry/blob/main/images/current_design.png?raw=true)
