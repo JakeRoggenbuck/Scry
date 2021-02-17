@@ -16,7 +16,7 @@ We use netstat and who for getting system information and Mongodb for our databa
 Most systems come pre-installed with who, and possibly netstat but they may have to be installed separately
 
 ### Running
-- Run `./start.sh` to run the updater_deamon.py in the background and run the scry.py Fastapi app
+- Run `./start.sh` to run the updater_deamon.py in the background then it will run the scry.py Fastapi app
 
 # Client
 The client is a Node.js React app the pulls data from the local Scry web API and displays it.
