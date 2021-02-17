@@ -1,11 +1,7 @@
 # Scry
 Scry consists of both a local server and a client. The server is responsible for gathering data about the system it's monitoring, then making it accessible to the client. The clients job is to present the data from the server, in an easy to use graphical interface in the browser.
 
-## Screenshots
-![Main Page](https://github.com/JakeRoggenbuck/Scry/blob/main/images/main_page.png?raw=true)
-![Ports](https://github.com/JakeRoggenbuck/Scry/blob/main/images/ports.png?raw=true)
-![Users](https://github.com/JakeRoggenbuck/Scry/blob/main/images/users.png?raw=true)
-![Main Page With Command Line](https://github.com/JakeRoggenbuck/Scry/blob/main/images/main_page_with_command_line.png?raw=true)
+![Main Page](https://github.com/JakeRoggenbuck/Scry/blob/main/images/main_page.png?raw=true =403x302)
 
 # Server
 The server includes two main parts, the updater_deamon and the Scry Fastapi. First, the updater_deamon will run commands in the background to gather crucial information about the system and update it in the local database. The Scry Fastapi will allow the client to pull data using an internal web API to present the data in the browser.
@@ -29,3 +25,8 @@ Install the requirements using `npm install` in the `./client/scry` directory.
 
 ### Running
 Then run it using `npm start`.
+
+## Screenshots
+![Ports](https://github.com/JakeRoggenbuck/Scry/blob/main/images/ports.png?raw=true)
+![Users](https://github.com/JakeRoggenbuck/Scry/blob/main/images/users.png?raw=true)
+![Main Page With Command Line](https://github.com/JakeRoggenbuck/Scry/blob/main/images/main_page_with_command_line.png?raw=true)
