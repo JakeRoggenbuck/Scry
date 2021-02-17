@@ -11,3 +11,4 @@ class Database:
         self.ssh_logins = self.database["ssh_logins"]
         self.user_connections = self.database["user_connections"]
         self.network_traffic = self.database["network_traffic"]
+        self.storage = self.database["storag"e"]

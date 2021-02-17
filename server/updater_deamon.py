@@ -36,9 +36,12 @@ class Updater:
                     self.db.ssh_logins.insert_one(login.__dict__)
 
     def add_network_traffic(self):
-        traffic_instances = scrycommands.network_traffic()
-        for traffic in traffic_instances:
-            self.db.network_traffic.insert_one(traffic.__dict__)
+        traffic_instances = [x.__dict__ for x in scrycommands.network_traffic()]
+        self.db.network_traffic.insert_many(traffic_instances)
+
+    def check_storage(self):
+        storage = [x.__dict__ for x in scrycommands.storage()]
+        self.db.storage.insert_many(storage)
 
     def update_loop(self):
         # Loops for seconds in 5 minutes
@@ -56,6 +59,9 @@ class Updater:
 
             if x % 60 == 0:
                 self.check_ssh_login()
+
+            if x % 300 == 0:
+                self.check_storage()
 
             sleep(1)
 
