@@ -3,7 +3,7 @@ import User from '../../Assets/user-profile.svg'
 import LeftArrow from '../../Assets/left-arrow.svg'
 import { Link } from 'react-router-dom';
 
-const ActiveUsersDetail = (props) => {
+const LoginsDetail = (props) => {
 
     const [userList, setUserList] = useState();
 
@@ -16,7 +16,7 @@ const ActiveUsersDetail = (props) => {
         return result
     }
 
-    function populateActiveUsers(users) {
+    function populateLogins(users) {
         console.log(users)
         setUserList(
             users.map((user) => 
@@ -38,7 +38,7 @@ const ActiveUsersDetail = (props) => {
 
     useEffect(() => {
         fetchActiveUserData().then((result) => {
-            populateActiveUsers(result)
+            populateLogins(result)
         })
         console.log("Do this once")
     }, [])
@@ -57,4 +57,4 @@ const ActiveUsersDetail = (props) => {
     );  
 };
   
-export default ActiveUsersDetail
+export default LoginsDetail

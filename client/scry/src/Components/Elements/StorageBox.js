@@ -1,9 +1,8 @@
 import React, {useEffect, useState} from 'react';
 import { Link } from 'react-router-dom';
 
-const TrafficBox = (props) => {
+const StorageBox = (props) => {
 
-    const [storageList, setStorageList] = useState()
     var storageChartRaw = []
     const [storageChart, setStorageChart] = useState(<div></div>)
 
@@ -54,19 +53,6 @@ const TrafficBox = (props) => {
                 <>{process}</>
             )
         )
-
-        setStorageList(
-            processes.map((process) => 
-                <tr>
-                    <td>{process.name}</td>
-                    <td>{process.size}</td>
-                    <td>{process.used}</td>
-                    <td>{process.avail}</td>
-                    <td>{process.percent_used}</td>
-                    <td>{process.mounted}</td>
-                </tr>
-            )
-        )
     }
 
     useEffect(() => {
@@ -92,4 +78,4 @@ const TrafficBox = (props) => {
     );  
 };
   
-export default TrafficBox
+export default StorageBox

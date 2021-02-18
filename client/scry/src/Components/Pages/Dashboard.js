@@ -1,11 +1,11 @@
 import React, {useEffect, useState} from 'react';
 import { Link } from 'react-router-dom';
-import ActiveUsersBox from '../Elements/ActiveUsersBox';
+import LoginsBox from '../Elements/LoginsBox';
 import LoginHistoryBox from '../Elements/LoginHistoryBox';
 import LoginHistory from '../Elements/LoginHistoryBox';
 import OpenPortsBox from '../Elements/OpenPortsBox';
 import OpenPorts from '../Elements/OpenPortsBox';
-import TrafficBox from '../Elements/TrafficBox';
+import StorageBox from '../Elements/StorageBox';
 
 var MongoClient = require('mongodb').MongoClient;
 var url = "mongodb://localhost:27017/";
@@ -34,13 +34,13 @@ const Dashboard = (props) => {
     return (
         <>
             <div className="monitor-box-grid-div">
-                <ActiveUsersBox/>
+                <LoginsBox/>
                 <LoginHistoryBox/>
             </div>
 
             <div className="monitor-box-grid-div">
                 <OpenPortsBox/>
-                <TrafficBox/>
+                <StorageBox/>
             </div>
         </>
     );  

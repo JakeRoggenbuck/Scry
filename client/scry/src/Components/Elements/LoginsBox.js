@@ -2,7 +2,7 @@ import React, {useEffect, useState} from 'react';
 import { Link } from 'react-router-dom';
 import User from '../../Assets/user-profile.svg'
 
-const ActiveUsersBox = (props) => {
+const LoginsBox = (props) => {
     
     const [userList, setUserList] = useState();
 
@@ -15,7 +15,7 @@ const ActiveUsersBox = (props) => {
         return result
     }
 
-    function populateActiveUsers(users) {
+    function populateLogins(users) {
         console.log(users)
         setUserList(
             users.map((user) => 
@@ -36,7 +36,7 @@ const ActiveUsersBox = (props) => {
 
     useEffect(() => {
         fetchActiveUserData().then((result) => {
-            populateActiveUsers(result)
+            populateLogins(result)
         })
         console.log("Do this once")
     }, [])
@@ -57,4 +57,4 @@ const ActiveUsersBox = (props) => {
     );  
 };
   
-export default ActiveUsersBox
+export default LoginsBox
