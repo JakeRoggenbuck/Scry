@@ -29,6 +29,9 @@ The client is a Node.js React app the pulls data from the local Scry web API and
 ### Running
 - Then run it using `npm start`.
 
+### Video demonstration
+https://www.youtube.com/watch?v=D87Blido5tQ
+
 ## Screenshots
 ![Main Page](https://github.com/JakeRoggenbuck/Scry/blob/main/images/main_page.png?raw=true)
 ![Ports](https://github.com/JakeRoggenbuck/Scry/blob/main/images/ports.png?raw=true)
