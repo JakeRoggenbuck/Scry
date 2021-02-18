@@ -7,6 +7,12 @@ from time import sleep
 class Updater:
     def __init__(self):
         self.db = Database()
+        self.program_support = scrycommands.test_program_support()
+
+    def get_device_info(self):
+        info = scrycommands.device_info().__dict__
+        self.db.database.drop_collection("device_info")
+        self.db.device_info.insert_one(info)
 
     def check_ports(self):
         tcp_ports = scrycommands.netstat_listening_tcp()
@@ -36,26 +42,35 @@ class Updater:
                     self.db.ssh_logins.insert_one(login.__dict__)
 
     def add_network_traffic(self):
-        traffic_instances = scrycommands.network_traffic()
-        for traffic in traffic_instances:
-            self.db.network_traffic.insert_one(traffic.__dict__)
+        traffic_instances = [x.__dict__ for x in scrycommands.network_traffic()]
+        self.db.network_traffic.insert_many(traffic_instances)
+
+    def check_storage(self):
+        storage = scrycommands.storage()
+        for device in storage:
+            found = self.db.storage.find_one(device.__dict__)
+            if not found:
+                self.db.storage.insert_one(device.__dict__)
 
     def update_loop(self):
+        # On startup
+        self.get_device_info()
         # Loops for seconds in 5 minutes
         for x in range(0, 60 * 5):
-            # Every Second
-            if x % 1 == 0:
-                # Network traffic disabled for now
-                # self.add_network_traffic()
-                pass
-
             # Every 30 seconds
             if x % 30 == 0:
-                self.check_users()
-                self.check_ports()
+                if self.program_support.has_who:
+                    self.check_users()
+
+                if self.program_support.has_netstat:
+                    self.check_ports()
 
             if x % 60 == 0:
                 self.check_ssh_login()
+
+            if x % 300 == 0:
+                if self.program_support.has_df:
+                    self.check_storage()
 
             sleep(1)
 
