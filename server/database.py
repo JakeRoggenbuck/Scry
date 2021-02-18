@@ -14,5 +14,5 @@ class Database:
         self.tracker = self.database["tracker"]
         self.storage = self.database["storage"]
         self.usage = self.database["cpu_usage"]
-        self.uptime = self.uptime["server_uptime"]
+        self.uptime = self.database["server_uptime"]
         self.device_info = self.database["device_info"]
