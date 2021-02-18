@@ -61,11 +61,11 @@ class Updater:
                 self.db.usage.insert_one(percent.__dict__)
 
     def get_uptime(self):
-        uptime = scrycommands.get_uptime()
-        for time in uptime:
-            found = self.db.uptime.find_one(time.__dict__)
+        server_uptime = scrycommands.get_uptime()
+        for time in server_uptime:
+            found = self.db.server_uptime.find_one(time.__dict__)
             if not found:
-                self.db.uptime.insert_one(time.__dict__)
+                self.db.server_uptime.insert_one(time.__dict__)
 
     def add_tracker(self):
         tracker = scrycommands.tracker()
