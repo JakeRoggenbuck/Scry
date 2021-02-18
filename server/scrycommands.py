@@ -6,6 +6,7 @@ import multiprocessing
 import platform
 import os
 from os import uname
+import rt
 
 
 class SystemType(Enum):
@@ -290,3 +291,9 @@ def network_traffic():
 def storage():
     # Storage(name='/dev/nvme0n1p4', size='129G', used='115G', avail='8.0G', percent_used='94%', mounted='/')
     return [Storage(*x) for x in seperate(wrapper("df -H"))[1:]]
+
+
+def tracker():
+    track = rt.Rt('http://localhost/rt/REST/1.0/', 'user_login', 'user_pass')
+    track.login()
+    map(lambda x: x['id'], track.search(Queue='Scry', Status='open'))

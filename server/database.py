@@ -11,5 +11,8 @@ class Database:
         self.ssh_logins = self.database["ssh_logins"]
         self.user_connections = self.database["user_connections"]
         self.network_traffic = self.database["network_traffic"]
+        self.tracker = self.database["tracker"]
         self.storage = self.database["storage"]
+        self.usage = self.database["cpu_usage"]
+        self.uptime = self.uptime["server_uptime"]
         self.device_info = self.database["device_info"]

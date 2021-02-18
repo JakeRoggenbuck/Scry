@@ -2,6 +2,7 @@
 from database import Database
 import scrycommands
 from time import sleep
+import rt
 
 
 class Updater:
@@ -51,6 +52,27 @@ class Updater:
             found = self.db.storage.find_one(device.__dict__)
             if not found:
                 self.db.storage.insert_one(device.__dict__)
+
+    def check_usage(self):
+        usage = scrycommands.get_cpu_usage()
+        for percent in usage:
+            found = self.db.usage.find_one(percent.__dict__)
+            if not found:
+                self.db.usage.insert_one(percent.__dict__)
+
+    def get_uptime(self):
+        uptime = scrycommands.get_uptime()
+        for time in uptime:
+            found = self.db.uptime.find_one(time.__dict__)
+            if not found:
+                self.db.uptime.insert_one(time.__dict__)
+
+    def add_tracker(self):
+        tracker = scrycommands.tracker()
+        for ticket in tracker:
+            found = self.db.tracker.find_one(ticket.__dict__)
+            if not found:
+                self.db.tracker.insert_one(ticket.__dict__)
 
     def update_loop(self):
         # On startup
