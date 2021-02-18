@@ -104,6 +104,12 @@ p {
 }
 
 /* DASHBOARD ELEMENTS */
+#logo {
+  width: 200px;
+  max-width: 100%;
+  padding: 16px 16px 0px 16px;
+}
+
 .monitor-box-grid-div {
   padding: 16px 16px 0px 16px;
   display: flex;

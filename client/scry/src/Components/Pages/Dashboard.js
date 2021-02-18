@@ -6,6 +6,7 @@ import LoginHistory from '../Elements/LoginHistoryBox';
 import OpenPortsBox from '../Elements/OpenPortsBox';
 import OpenPorts from '../Elements/OpenPortsBox';
 import StorageBox from '../Elements/StorageBox';
+import ScryLogo from '../../Assets/ScryLogo.png'
 
 var MongoClient = require('mongodb').MongoClient;
 var url = "mongodb://localhost:27017/";
@@ -33,6 +34,8 @@ var url = "mongodb://localhost:27017/";
 const Dashboard = (props) => {
     return (
         <>
+            <img id="logo" src={ScryLogo}/>
+
             <div className="monitor-box-grid-div">
                 <LoginsBox/>
                 <LoginHistoryBox/>
