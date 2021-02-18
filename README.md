@@ -1,4 +1,6 @@
 # Scry
+Scry is a web application that allows users to quickly check open ports, logins, and critical system information about their server from any web browser, anywhere. 
+
 Scry consists of both a local server and a client. The server is responsible for gathering data about the system it's monitoring, then making it accessible to the client. The clients job is to present the data from the server, in an easy to use graphical interface in the browser.
 
 <img src="https://github.com/JakeRoggenbuck/Scry/blob/main/images/main_page.png?raw=true"

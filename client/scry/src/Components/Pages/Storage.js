@@ -34,7 +34,6 @@ const Storage = (props) => {
     }
 
     function populateStorageData(processes) {
-        
         if (processes != []) {
             for (var i = 0; i < processes.length; i++) {
                 var c = i / processes.length;
