@@ -84,6 +84,16 @@ class TrafficInstance:
     tx_coll: int
 
 
+@dataclass
+class Storage:
+    name: str
+    size: str
+    used: str
+    avail: str
+    percent_used: str
+    mounted: str = None
+
+
 def wrapper(command):
     try:
         output = subprocess.check_output(command, stderr=LOG_FILE, shell=True)
@@ -198,3 +208,8 @@ def network_traffic():
             index += 2
 
         return _all
+
+
+def storage():
+    # Storage(name='/dev/nvme0n1p4', size='129G', used='115G', avail='8.0G', percent_used='94%', mounted='/')
+    return [Storage(*x) for x in seperate(wrapper("df -H"))[1:]]
