@@ -31,28 +31,27 @@ const StorageBox = (props) => {
     }
 
     function populateStorageData(processes) {
-        console.log("chief")
 
-        for (var i = 0; i < processes.length; i++) {
-            var c = i / processes.length;
+        if (processes != []) {
+            for (var i = 0; i < processes.length; i++) {
+                var c = i / processes.length;
 
-            console.log("hef")
+                if (processes[i].percent_used != "0%") {
 
-            if (processes[i].percent_used != "0%") {
-
-            storageChartRaw.push(
-                <div className="storage-chart-item" style={{ width: processes[i].percent_used.slice(0, -1) + "%", backgroundColor: rainbowStop(c, 1, 0.5) }}>
-                    <p>{processes[i].percent_used}</p>
-                    <div className="storage-chart-item-popup">{processes[i].name} - {processes[i].percent_used}</div>
-                </div>)
+                storageChartRaw.push(
+                    <div className="storage-chart-item" style={{ width: processes[i].percent_used.slice(0, -1) + "%", backgroundColor: rainbowStop(c, 1, 0.5) }}>
+                        <p>{processes[i].percent_used}</p>
+                        <div className="storage-chart-item-popup">{processes[i].name} - {processes[i].percent_used}</div>
+                    </div>)
+                }
             }
-          }
 
-        setStorageChart(
-            storageChartRaw.map((process) => 
-                <>{process}</>
+            setStorageChart(
+                storageChartRaw.map((process) => 
+                    <>{process}</>
+                )
             )
-        )
+        }
     }
 
     useEffect(() => {

@@ -16,7 +16,6 @@ const LoginsBox = (props) => {
     }
 
     function populateLogins(users) {
-        console.log(users)
         setUserList(
             users.map((user) => 
                 <li>
@@ -38,7 +37,6 @@ const LoginsBox = (props) => {
         fetchActiveUserData().then((result) => {
             populateLogins(result)
         })
-        console.log("Do this once")
     }, [])
 
 

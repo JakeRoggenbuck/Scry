@@ -16,7 +16,6 @@ const ActiveUsersBox = (props) => {
     }
 
     function populateActiveUsers(users) {
-        console.log(users)
         setUserList(
             users.map((user) => 
                 <li>
@@ -38,7 +37,6 @@ const ActiveUsersBox = (props) => {
         fetchActiveUserData().then((result) => {
             populateActiveUsers(result)
         })
-        console.log("Do this once")
     }, [])
 
 

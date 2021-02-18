@@ -17,7 +17,6 @@ const Ssh_Logins = (props) => {
     }
 
     function populateSshLogins(logins) {
-        console.log(logins[0].invalid_user)
         setSshLoginList(
             logins.map((login) => 
                 <tr>
@@ -39,7 +38,6 @@ const Ssh_Logins = (props) => {
         fetchSshLoginData().then((result) => {
             populateSshLogins(result)
         })
-        console.log("Do this once")
     }, [])
 
     return (

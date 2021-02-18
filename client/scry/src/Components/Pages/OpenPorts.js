@@ -17,7 +17,6 @@ const OpenPortsDetail = (props) => {
     }
 
     function populateOpenPorts(ports) {
-        console.log(ports)
         setPortList(
             ports.map((port) => 
                 <tr>
@@ -37,7 +36,6 @@ const OpenPortsDetail = (props) => {
         fetchPortData().then((result) => {
             populateOpenPorts(result)
         })
-        console.log("Do this once")
     }, [])
 
     return (
