@@ -17,7 +17,6 @@ const OpenPortsDetail = (props) => {
     }
 
     function populateOpenPorts(ports) {
-        console.log(ports)
         setPortList(
             ports.map((port) => 
                 <tr>
@@ -37,14 +36,13 @@ const OpenPortsDetail = (props) => {
         fetchPortData().then((result) => {
             populateOpenPorts(result)
         })
-        console.log("Do this once")
     }, [])
 
     return (
         <>
             <div className="detail-full-width-div">
                 <Link className="disguised-a" to="/"><h2><img className="nav-back-arrow" src={LeftArrow}/>Scry</h2></Link>
-                <h1 style={{ marginBottom: "32px", marginTop: "8px" }}>Active Users</h1>
+                <h1 style={{ marginBottom: "32px", marginTop: "8px" }}>Open Ports</h1>
 
                 <div className="ports-table-scroll-div">
                     <table className="ports-table">

@@ -16,7 +16,6 @@ const LoginHistoryBox = (props) => {
     }
 
     function populateSshLogins(logins) {
-        console.log(logins[0].invalid_user)
         setSshLoginList(
             logins.slice(0, 4).map((login) => 
                 <tr>
@@ -34,7 +33,6 @@ const LoginHistoryBox = (props) => {
         fetchSshLoginData().then((result) => {
             populateSshLogins(result)
         })
-        console.log("Do this once")
     }, [])
 
     return (
