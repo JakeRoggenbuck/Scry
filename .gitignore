@@ -112,4 +112,3 @@ __pycache__/
 # IDEA config
 .idea/
 .iml
-venv/

@@ -1,7 +1,10 @@
 import subprocess
 from dataclasses import dataclass
+from datetime import timedelta
 from enum import Enum
+import multiprocessing
 import platform
+import os
 
 
 class SystemType(Enum):
@@ -31,6 +34,52 @@ def get_os():
 
 
 SYSTEM = get_os()
+
+
+def get_cpus():
+    pipe = os.popen("cat /proc/cpuinfo |" + "grep 'model name'")
+    out = pipe.read().strip().split(':')[-1]
+    pipe.close()
+
+    if not out:
+        pipe = os.popen("cat /proc/cpuinfo |" + "grep 'Processor'")
+        out = pipe.read().strip().split(':')[-1]
+        pipe.close()
+
+    cpus = multiprocessing.cpu_count()
+
+    out = {'cpus': cpus, 'type': out}
+
+    return out
+
+
+def get_uptime():
+    with open('/proc/uptime', 'r') as f:
+        uptime_seconds = float(f.readline().split()[0])
+        uptime_time = str(timedelta(seconds=uptime_seconds))
+        data = uptime_time.split('.', 1)[0]
+
+    return data
+
+
+def get_cpu_usage():
+    pipe = os.popen("ps aux --sort -%cpu,-rss")
+    data = pipe.read().strip().split('\n')
+    pipe.close()
+    usage = [i.split(None, 10) for i in data]
+    del usage[0]
+    total_usage = []
+
+    for element in usage:
+        usage_cpu = element[2]
+        total_usage.append(usage_cpu)
+
+    total_usage = sum(float(i) for i in total_usage)
+    total_free = ((100 * int(get_cpus()['cpus'])) - float(total_usage))
+    cpu_used = {'free': total_free, 'used': float(total_usage), 'all': usage}
+    data = cpu_used
+
+    return data
 
 
 @dataclass
