@@ -2,6 +2,7 @@ import subprocess
 from dataclasses import dataclass
 from enum import Enum
 import platform
+from os import uname
 
 
 class SystemType(Enum):
@@ -84,12 +85,49 @@ class TrafficInstance:
     tx_coll: int
 
 
+@dataclass
+class Storage:
+    name: str
+    size: str
+    used: str
+    avail: str
+    percent_used: str
+    mounted: str = None
+
+
+@dataclass
+class DeviceInfo:
+    name: str
+    system: str
+    release: str
+
+
+@dataclass
+class ProgramSupport:
+    has_netstat: bool
+    has_who: bool
+    has_df: bool
+
+
+def device_info():
+    _uname = uname()
+    name = _uname.nodename
+    system = platform.system()
+    release = _uname.release
+    return DeviceInfo(name, system, release)
+
+
 def wrapper(command):
     try:
         output = subprocess.check_output(command, stderr=LOG_FILE, shell=True)
         return str(output, "UTF-8").rstrip("\n")
     except:
         return None
+
+
+def test_program_support():
+    t = lambda x: False if wrapper(x) == None else True
+    return ProgramSupport(t("netstat --help"), t("who --help"), t("df --help"))
 
 
 def seperate(wrapper_output: str):
@@ -198,3 +236,8 @@ def network_traffic():
             index += 2
 
         return _all
+
+
+def storage():
+    # Storage(name='/dev/nvme0n1p4', size='129G', used='115G', avail='8.0G', percent_used='94%', mounted='/')
+    return [Storage(*x) for x in seperate(wrapper("df -H"))[1:]]

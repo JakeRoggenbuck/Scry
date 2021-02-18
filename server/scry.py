@@ -9,7 +9,9 @@ database = Database()
 
 @app.get("/")
 def read_root():
-    return {"Collections": ["ports", "ssh_logins", "user_connections", "network_traffic"]}
+    return {
+        "Collections": ["ports", "ssh_logins", "user_connections", "network_traffic", "storage"]
+    }
 
 
 @app.get("/collection/{collection_name}")
