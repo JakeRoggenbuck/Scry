@@ -1,7 +1,9 @@
 import React, {useEffect, useState} from 'react';
+import User from '../../Assets/user-profile.svg'
+import LeftArrow from '../../Assets/left-arrow.svg'
 import { Link } from 'react-router-dom';
 
-const TrafficBox = (props) => {
+const Storage = (props) => {
 
     const [storageList, setStorageList] = useState()
     var storageChartRaw = []
@@ -75,21 +77,37 @@ const TrafficBox = (props) => {
         })
         console.log("Do this once")
     }, [])
-    
+
     return (
-        <div className="monitor-box-div">
-            <Link className="disguised-a" to="/storage">
-                <div className="monitor-box-div-card">
-                    <h3 style={{ marginBottom: "16px" }}>Storage</h3>
+        <>
+            <div className="detail-full-width-div">
+                <Link className="disguised-a" to="/"><h2><img className="nav-back-arrow" src={LeftArrow}/>Scry</h2></Link>
+                <h1 style={{ marginBottom: "32px", marginTop: "8px" }}>Storage</h1>
+
+                <div className="ports-table-scroll-div">
                     <div className="storage-chart-container">
                         {storageChart}
                     </div>
+                    
 
-                    <p style={{ marginTop: "16px", textAlign: "center" }}>TO VIEW MORE, CLICK HERE</p>
+                    <table className="ports-table">
+                        <tr>
+                            <th>NAME</th>
+                            <th>SIZE</th>
+                            <th>USED</th>
+                            <th>AVAIL</th>
+                            <th>PERCENT USED</th>
+                            <th>MOUNTED</th>
+                        </tr>
+
+                        {storageList}
+                    </table>
                 </div>
-            </Link>
-        </div>
+
+                
+            </div>
+        </>
     );  
 };
   
-export default TrafficBox
+export default Storage

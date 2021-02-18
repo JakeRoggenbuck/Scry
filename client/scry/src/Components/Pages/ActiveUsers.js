@@ -47,7 +47,7 @@ const ActiveUsersDetail = (props) => {
         <>
             <div className="detail-padded-div">
                 <Link className="disguised-a" to="/"><h2><img className="nav-back-arrow" src={LeftArrow}/>Scry</h2></Link>
-                <h1 style={{ marginBottom: "32px", marginTop: "8px" }}>Active Users</h1>
+                <h1 style={{ marginBottom: "32px", marginTop: "8px" }}>Logins</h1>
 
                 <ul className="user-list-ul detail-list">
                     { userList }

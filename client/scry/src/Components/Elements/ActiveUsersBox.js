@@ -46,7 +46,7 @@ const ActiveUsersBox = (props) => {
         <div className="monitor-box-div">
             <Link className="disguised-a" to="/active-users">
                 <div className="monitor-box-div-card">
-                    <h3>Active Users</h3>
+                    <h3>Logins</h3>
 
                     <ul className="user-list-ul">
                         {userList}

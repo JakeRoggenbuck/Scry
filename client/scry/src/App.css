@@ -124,6 +124,9 @@ p {
 
   padding: 16px;
   text-align: left;
+
+  overflow-x: auto;
+  overflow-y: auto;
   
   background-color: rgb(var(--background-dark));
   border-radius: 4px;
@@ -297,4 +300,51 @@ p {
   top: 50%;
   left: 50%;
   transform: translateX(-50%) translateY(-50%);
+}
+
+.storage-chart-container {
+  height: 100px;
+  width: 100%;
+
+  margin-bottom: 16px;
+
+  border: 1px solid #87B1D1;
+  border-radius: 4px;
+  overflow: hidden;
+}
+
+.storage-chart-item {
+  height: 100%;
+  display: inline-block;
+  margin-right: 4px;
+
+  position: relative;
+}
+
+.storage-chart-item p {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translateX(-50%) translateY(-50%);
+  color: black;
+}
+
+.storage-chart-item-popup {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translateX(-50%) translateY(-50%);
+  background-color: rgb(var(--background-dark));
+  padding: 8px;
+  color: white;
+  border: 1px solid #87B1D1;
+  border-radius: 4px;
+  overflow: hidden;
+  font-family: 'Inconsolata', monospace;
+  visibility: hidden;
+  z-index: 10;
+}
+
+.storage-chart-item:hover .storage-chart-item-popup {
+  visibility: visible;
 }
